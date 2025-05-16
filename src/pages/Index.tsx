@@ -5,7 +5,7 @@ import ChatBotButton from '@/components/ChatBotButton';
 import FeatureCard from '@/components/FeatureCard';
 import TestimonialCard from '@/components/TestimonialCard';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, Music, Moon, Compass } from 'lucide-react';
+import { MessageCircle, Music, Moon, Compass, Heart } from 'lucide-react';
 
 const Index = () => {
   return (
