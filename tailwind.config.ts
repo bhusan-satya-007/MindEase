@@ -62,6 +62,13 @@ export default {
           rose: "#FFD1DC", // Soft rose
           sage: "#D1E8D0", // Soft sage green
         },
+        // Cosmic theme colors
+        cosmic: {
+          dark: "#1A1F2C", // Dark background
+          darker: "#171621", // Darker background
+          accent: "#F97316", // Bright orange accent
+          gold: "#FEC6A1", // Soft gold
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -84,20 +91,27 @@ export default {
         "float": {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" }
+        },
+        "shimmer": {
+          "0%": { backgroundPosition: "-500px 0" },
+          "100%": { backgroundPosition: "500px 0" }
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-gentle": "pulse-gentle 3s infinite ease-in-out",
-        "float": "float 5s infinite ease-in-out"
+        "float": "float 5s infinite ease-in-out",
+        "shimmer": "shimmer 3s infinite linear"
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"]
+        sans: ["Inter", "sans-serif"],
+        serif: ["Playfair Display", "serif", "Times New Roman"]
       },
       backgroundImage: {
         "gradient-calm": "linear-gradient(to right, #E2D1F9, #C6E2E9)",
-        "gradient-sunset": "linear-gradient(to right, #FFD1DC, #E2D1F9)"
+        "gradient-sunset": "linear-gradient(to right, #FFD1DC, #E2D1F9)",
+        "gradient-cosmic": "linear-gradient(to right, #1A1F2C, #221F26)"
       }
     }
   },

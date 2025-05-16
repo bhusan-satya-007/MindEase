@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -122,18 +123,27 @@ const Index = () => {
           {/* New Cosmic Insider Button */}
           <div className="mt-16 text-center">
             <Link to="/astrology">
-              <button className="relative px-8 py-4 overflow-hidden rounded-lg group bg-gradient-to-br from-gray-800 to-gray-900 shadow-lg transition-all duration-300 hover:shadow-amber-900/20">
+              <button className="relative px-10 py-6 overflow-hidden rounded-lg group shadow-lg transition-all duration-300 hover:shadow-amber-900/30">
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 opacity-90 group-hover:opacity-100 transition-opacity duration-300"></span>
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-amber-800/20 to-orange-800/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                <div className="relative z-10">
-                  <span className="font-serif text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-500 font-semibold" style={{ fontFamily: "'Times New Roman', serif", letterSpacing: "0.06em" }}>
+                
+                {/* Decorative stars and symbols */}
+                <div className="absolute inset-0 -z-10 opacity-30">
+                  <div className="absolute top-1/4 left-1/4 text-xl text-amber-600 opacity-40">✧</div>
+                  <div className="absolute top-3/4 right-1/4 text-xl text-amber-600 opacity-40">✦</div>
+                  <div className="absolute top-1/2 left-3/4 text-xl text-amber-600 opacity-40">⋆</div>
+                  <div className="absolute bottom-1/4 left-1/3 text-xl text-amber-600 opacity-40">⊹</div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl text-amber-600 opacity-30">☽</div>
+                </div>
+                
+                <div className="relative z-10 space-y-2">
+                  <span 
+                    className="font-serif text-2xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-500 font-semibold block" 
+                    style={{ fontFamily: "'Times New Roman', serif", letterSpacing: "0.1em" }}
+                  >
                     Cosmic Insider
                   </span>
-                  <span className="block mt-1 text-xs text-amber-200/80">Discover your celestial patterns</span>
-                </div>
-                <div className="absolute inset-0 -z-10 opacity-20">
-                  <div className="absolute top-1/4 left-1/4 text-2xl text-amber-600 opacity-30">॰</div>
-                  <div className="absolute bottom-1/4 right-1/4 text-2xl text-amber-600 opacity-30">⁎</div>
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-amber-600 opacity-30">☽</div>
+                  <span className="block text-sm text-amber-200/90 font-light">Unveil the celestial patterns of your journey</span>
                 </div>
               </button>
             </Link>
