@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -6,7 +5,7 @@ import ChatBotButton from '@/components/ChatBotButton';
 import FeatureCard from '@/components/FeatureCard';
 import TestimonialCard from '@/components/TestimonialCard';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, Music, Moon, Heart, Headphones } from 'lucide-react';
+import { MessageCircle, Music, Moon, Compass } from 'lucide-react';
 
 const Index = () => {
   return (
@@ -60,7 +59,7 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <FeatureCard
               title="Chat Support"
               description="Connect with our AI assistant for immediate guidance and emotional support."
@@ -118,6 +117,26 @@ const Index = () => {
               <div className="aspect-square bg-calm-rose rounded-lg mt-4"></div>
               <div className="aspect-square bg-calm-lavender rounded-lg"></div>
             </div>
+          </div>
+          
+          {/* New Cosmic Insider Button */}
+          <div className="mt-16 text-center">
+            <Link to="/astrology">
+              <button className="relative px-8 py-4 overflow-hidden rounded-lg group bg-gradient-to-br from-gray-800 to-gray-900 shadow-lg transition-all duration-300 hover:shadow-amber-900/20">
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-amber-800/20 to-orange-800/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <div className="relative z-10">
+                  <span className="font-serif text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-500 font-semibold" style={{ fontFamily: "'Times New Roman', serif", letterSpacing: "0.06em" }}>
+                    Cosmic Insider
+                  </span>
+                  <span className="block mt-1 text-xs text-amber-200/80">Discover your celestial patterns</span>
+                </div>
+                <div className="absolute inset-0 -z-10 opacity-20">
+                  <div className="absolute top-1/4 left-1/4 text-2xl text-amber-600 opacity-30">॰</div>
+                  <div className="absolute bottom-1/4 right-1/4 text-2xl text-amber-600 opacity-30">⁎</div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl text-amber-600 opacity-30">☽</div>
+                </div>
+              </button>
+            </Link>
           </div>
         </div>
       </section>
