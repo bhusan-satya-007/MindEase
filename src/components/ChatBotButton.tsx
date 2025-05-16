@@ -9,7 +9,7 @@ const ChatBotButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState<{ type: 'user' | 'bot', text: string }[]>([
-    { type: 'bot', text: 'Hi there! I\'m your personal mental health assistant. How can I help you today?' }
+    { type: 'bot', text: 'Hi there! I\'m your personal mental health and astrology assistant. How can I help you today?' }
   ]);
   const { toast } = useToast();
 
@@ -36,16 +36,29 @@ const ChatBotButton = () => {
 
   const getSimpleResponse = (msg: string): string => {
     const lowercaseMsg = msg.toLowerCase();
+    
+    // Mental health responses
     if (lowercaseMsg.includes('sad') || lowercaseMsg.includes('depress')) {
       return "I'm sorry to hear you're feeling this way. Have you tried our meditation sessions? They might help improve your mood.";
     } else if (lowercaseMsg.includes('anxious') || lowercaseMsg.includes('stress') || lowercaseMsg.includes('worry')) {
       return "Anxiety can be challenging. Our calm music section has tracks specifically designed to reduce stress and anxiety.";
     } else if (lowercaseMsg.includes('sleep') || lowercaseMsg.includes('insomnia')) {
       return "Trouble sleeping is common. Check out our sleep music collection - the gentle sounds can help you drift off.";
+    } 
+    // Astrology responses
+    else if (lowercaseMsg.includes('zodiac') || lowercaseMsg.includes('sign') || lowercaseMsg.includes('horoscope')) {
+      return "Our astrology section can help you learn more about your zodiac sign and daily horoscope. Have you checked your birth chart yet?";
+    } else if (lowercaseMsg.includes('aries') || lowercaseMsg.includes('taurus') || lowercaseMsg.includes('gemini') || 
+               lowercaseMsg.includes('cancer') || lowercaseMsg.includes('leo') || lowercaseMsg.includes('virgo') || 
+               lowercaseMsg.includes('libra') || lowercaseMsg.includes('scorpio') || lowercaseMsg.includes('sagittarius') || 
+               lowercaseMsg.includes('capricorn') || lowercaseMsg.includes('aquarius') || lowercaseMsg.includes('pisces')) {
+      return "Each zodiac sign has unique traits and tendencies. Understanding your sign can provide insights into your personality and behaviors. Would you like to know more about your compatibility with other signs?";
+    } else if (lowercaseMsg.includes('birth chart') || lowercaseMsg.includes('natal chart')) {
+      return "Your birth chart is a snapshot of the sky at the moment you were born. It can reveal detailed insights about your personality, strengths, and challenges. To create yours, visit our astrology section and enter your birth details.";
     } else if (lowercaseMsg.includes('thank')) {
       return "You're welcome! I'm here to help whenever you need me.";
     } else {
-      return "I appreciate you sharing that. Would you like to explore our guided meditation sessions or calming music tracks?";
+      return "I appreciate you sharing that. Would you like to explore our guided meditation sessions, calming music tracks, or perhaps learn more about your astrological profile?";
     }
   };
 
@@ -76,7 +89,7 @@ const ChatBotButton = () => {
         <Card className="fixed bottom-24 right-6 w-80 sm:w-96 h-96 z-50 flex flex-col shadow-xl overflow-hidden rounded-xl border border-gray-200">
           {/* Chat header */}
           <div className="bg-primary px-4 py-3 text-white">
-            <h3 className="font-medium">Mental Health Assistant</h3>
+            <h3 className="font-medium">Mental Health & Astrology Assistant</h3>
             <p className="text-xs opacity-75">Here to listen and support you</p>
           </div>
 

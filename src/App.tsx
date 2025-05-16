@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Chat from "./pages/Chat";
 import Music from "./pages/Music";
 import Meditation from "./pages/Meditation";
+import Astrology from "./pages/Astrology";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/chat" element={<Chat />} />
           <Route path="/music" element={<Music />} />
           <Route path="/meditation" element={<Meditation />} />
+          <Route path="/astrology" element={<Astrology />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
