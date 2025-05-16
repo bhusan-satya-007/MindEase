@@ -25,7 +25,7 @@ const Astrology = () => {
               Discover Your Cosmic Blueprint
             </h1>
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-              Explore how celestial bodies influence your personality, emotions, and life path
+              Explore how celestial patterns influence your personality, emotions, and life path
             </p>
           </div>
           <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-white to-transparent"></div>
@@ -35,8 +35,8 @@ const Astrology = () => {
         <section className="py-12 container mx-auto px-4">
           <Tabs defaultValue="birth-chart" className="w-full max-w-4xl mx-auto" onValueChange={setActiveTab}>
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="birth-chart">Your Birth Chart</TabsTrigger>
-              <TabsTrigger value="zodiac-signs">Zodiac Signs</TabsTrigger>
+              <TabsTrigger value="birth-chart">Your Cosmic Profile</TabsTrigger>
+              <TabsTrigger value="zodiac-signs">Celestial Signs</TabsTrigger>
             </TabsList>
             
             <TabsContent value="birth-chart" className="mt-6">
@@ -60,12 +60,12 @@ const Astrology = () => {
         <section className="py-12 bg-gray-50">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 text-center mb-8">
-              Astrology & Mental Wellness
+              Cosmic Insights & Mental Wellness
             </h2>
             <div className="max-w-3xl mx-auto text-center">
               <p className="text-gray-600 mb-6">
-                Discover how understanding your astrological profile can complement your mental wellness journey. 
-                Astrology provides another lens through which to explore your emotions, behaviors, and life patterns.
+                Discover how understanding your cosmic profile can complement your mental wellness journey. 
+                These insights provide another lens through which to explore your emotions, behaviors, and life patterns.
               </p>
               <Button 
                 variant="outline" 
