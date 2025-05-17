@@ -1,13 +1,14 @@
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
-import { CreditCard, Phone, ShoppingCart } from 'lucide-react';
+import { CreditCard, Phone } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import CardPaymentSection from '@/components/payment/CardPaymentSection';
+import UpiPaymentSection from '@/components/payment/UpiPaymentSection';
+import PaymentOptions from '@/components/payment/PaymentOptions';
 
 const PaymentPage = () => {
   const [activeTab, setActiveTab] = useState('card');
@@ -62,30 +63,10 @@ const PaymentPage = () => {
                   Secure and easy payment processing
                 </CardDescription>
                 
-                <div className="flex justify-center mt-4 space-x-4">
-                  <Button 
-                    variant={paymentType === 'subscription' ? 'default' : 'outline'}
-                    onClick={() => setPaymentType('subscription')}
-                    className="w-40"
-                  >
-                    Monthly Subscription
-                  </Button>
-                  <Button 
-                    variant={paymentType === 'oneTime' ? 'default' : 'outline'}
-                    onClick={() => setPaymentType('oneTime')}
-                    className="w-40"
-                  >
-                    Pay Per Query
-                  </Button>
-                </div>
-                
-                <div className="mt-4 text-center">
-                  <p className="font-medium">
-                    {paymentType === 'subscription' 
-                      ? '$9.99 per month - Unlimited queries' 
-                      : '$1.99 per query - Pay as you go'}
-                  </p>
-                </div>
+                <PaymentOptions 
+                  paymentType={paymentType} 
+                  setPaymentType={setPaymentType} 
+                />
               </CardHeader>
               
               <CardContent>
@@ -102,96 +83,21 @@ const PaymentPage = () => {
                   </TabsList>
                   
                   <TabsContent value="card">
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="cardNumber">Card Number</Label>
-                        <Input 
-                          id="cardNumber" 
-                          name="cardNumber" 
-                          placeholder="1234 5678 9012 3456"
-                          required
-                          value={formData.cardNumber}
-                          onChange={handleChange}
-                        />
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="cardName">Name on Card</Label>
-                        <Input 
-                          id="cardName" 
-                          name="cardName" 
-                          placeholder="John Doe"
-                          required
-                          value={formData.cardName}
-                          onChange={handleChange}
-                        />
-                      </div>
-                      
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="expiryDate">Expiry Date</Label>
-                          <Input 
-                            id="expiryDate" 
-                            name="expiryDate" 
-                            placeholder="MM/YY"
-                            required
-                            value={formData.expiryDate}
-                            onChange={handleChange}
-                          />
-                        </div>
-                        
-                        <div className="space-y-2">
-                          <Label htmlFor="cvv">CVV</Label>
-                          <Input 
-                            id="cvv" 
-                            name="cvv" 
-                            placeholder="123"
-                            required
-                            value={formData.cvv}
-                            onChange={handleChange}
-                          />
-                        </div>
-                      </div>
-                      
-                      <Button type="submit" className="w-full mt-6">
-                        {paymentType === 'subscription' 
-                          ? 'Subscribe Now' 
-                          : 'Pay Now'}
-                      </Button>
-                    </form>
+                    <CardPaymentSection 
+                      formData={formData}
+                      paymentType={paymentType}
+                      handleChange={handleChange}
+                      handleSubmit={handleSubmit}
+                    />
                   </TabsContent>
                   
                   <TabsContent value="upi">
-                    <div className="space-y-8">
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        <UpiOption name="Google Pay" icon={<Phone className="h-6 w-6" />} />
-                        <UpiOption name="PhonePe" icon="PhonePe" />
-                        <UpiOption name="Paytm" icon="Paytm" />
-                        <UpiOption name="CRED UPI" icon="CRED" />
-                        <UpiOption name="Amazon Pay" icon={<ShoppingCart className="h-6 w-6" />} />
-                        <UpiOption name="Other UPI" icon={<Phone className="h-6 w-6" />} />
-                      </div>
-                      
-                      <form onSubmit={handleSubmit} className="space-y-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="upiId">UPI ID</Label>
-                          <Input 
-                            id="upiId" 
-                            name="upiId" 
-                            placeholder="yourname@upi"
-                            required
-                            value={formData.upiId}
-                            onChange={handleChange}
-                          />
-                        </div>
-                        
-                        <Button type="submit" className="w-full">
-                          {paymentType === 'subscription' 
-                            ? 'Subscribe Now' 
-                            : 'Pay Now'}
-                        </Button>
-                      </form>
-                    </div>
+                    <UpiPaymentSection 
+                      upiId={formData.upiId}
+                      paymentType={paymentType}
+                      handleChange={handleChange}
+                      handleSubmit={handleSubmit}
+                    />
                   </TabsContent>
                 </Tabs>
               </CardContent>
@@ -206,21 +112,6 @@ const PaymentPage = () => {
       </main>
       
       <Footer />
-    </div>
-  );
-};
-
-const UpiOption = ({ name, icon }: { name: string, icon: React.ReactNode | string }) => {
-  return (
-    <div className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
-      <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mb-2">
-        {typeof icon === 'string' ? (
-          <span className="font-bold text-primary">{icon.substring(0, 2)}</span>
-        ) : (
-          icon
-        )}
-      </div>
-      <span className="text-sm font-medium">{name}</span>
     </div>
   );
 };
