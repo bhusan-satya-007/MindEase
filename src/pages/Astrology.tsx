@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -19,17 +18,17 @@ const Astrology = () => {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative py-16 md:py-24 overflow-hidden">
-          <div className="absolute inset-0 opacity-20 pointer-events-none">
-            <div className="absolute top-1/4 left-1/4 text-[200px] font-bold opacity-10 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
+          <div className="absolute inset-0 opacity-30 pointer-events-none">
+            <div className="absolute top-1/4 left-1/4 text-[200px] font-bold opacity-20 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
               ॐ
             </div>
-            <div className="absolute top-1/3 right-1/4 text-[180px] font-bold opacity-10 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
+            <div className="absolute top-1/3 right-1/4 text-[180px] font-bold opacity-20 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
               अ
             </div>
-            <div className="absolute bottom-1/4 left-1/3 text-[150px] font-bold opacity-10 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
+            <div className="absolute bottom-1/4 left-1/3 text-[150px] font-bold opacity-20 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
               श
             </div>
-            <div className="absolute top-1/2 right-1/3 text-[170px] font-bold opacity-10 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
+            <div className="absolute top-1/2 right-1/3 text-[170px] font-bold opacity-20 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
               स
             </div>
           </div>
@@ -91,7 +90,7 @@ const Astrology = () => {
         <section className="py-12 bg-gradient-to-b from-gray-900/90 to-gray-800/90 border-t border-amber-900/30">
           <div className="container mx-auto px-4 relative">
             <div className="absolute inset-0 opacity-10 pointer-events-none">
-              <div className="absolute top-1/2 left-1/4 text-[100px] font-bold opacity-10 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
+              <div className="absolute top-1/2 left-1/4 text-[100px] font-bold opacity-20 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
                 ध्यान
               </div>
             </div>
