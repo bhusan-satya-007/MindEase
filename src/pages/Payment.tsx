@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -7,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { CreditCard, Phone, Google, ShoppingCart } from 'lucide-react';
+import { CreditCard, Phone, ShoppingCart } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const PaymentPage = () => {
@@ -165,7 +164,7 @@ const PaymentPage = () => {
                   <TabsContent value="upi">
                     <div className="space-y-8">
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        <UpiOption name="Google Pay" icon={<Google className="h-6 w-6" />} />
+                        <UpiOption name="Google Pay" icon={<Phone className="h-6 w-6" />} />
                         <UpiOption name="PhonePe" icon="PhonePe" />
                         <UpiOption name="Paytm" icon="Paytm" />
                         <UpiOption name="CRED UPI" icon="CRED" />
