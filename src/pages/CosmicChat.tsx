@@ -1,11 +1,13 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import PaymentTrigger from '@/components/payment/PaymentTrigger';
+import { getQueryCount, incrementQueryCount, shouldTriggerPayment, getRemainingFreeQueries } from '@/utils/queryCounter';
 
 const CosmicChat = () => {
   const [message, setMessage] = useState('');
@@ -16,17 +18,57 @@ const CosmicChat = () => {
     }
   ]);
   const [loading, setLoading] = useState(false);
+  const [showPayment, setShowPayment] = useState(false);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+  
+  // Check if user is over query limit at component mount
+  useEffect(() => {
+    if (shouldTriggerPayment()) {
+      toast({
+        title: "Query limit reached",
+        description: "You've reached your free query limit for this month",
+      });
+    }
+  }, [toast]);
+
+  // Auto-scroll to bottom of chat
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [chatHistory]);
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
     if (!message.trim()) return;
+
+    // Check if user is over query limit
+    const queryCount = getQueryCount();
+    const willExceedLimit = queryCount >= 10;
+
+    if (willExceedLimit && !showPayment) {
+      setShowPayment(true);
+      return;
+    }
 
     // Add user message to chat
     const userMessage = { role: 'user', content: message };
     setChatHistory(prev => [...prev, userMessage]);
     setMessage('');
     setLoading(true);
+    
+    // Increment the query count
+    incrementQueryCount();
+    
+    // Display remaining queries toast
+    const remaining = getRemainingFreeQueries();
+    if (remaining <= 3 && remaining > 0) {
+      toast({
+        title: `${remaining} free queries remaining`,
+        description: "Subscribe for unlimited access or purchase query packs",
+      });
+    }
 
     // Simulate API response delay
     setTimeout(() => {
@@ -71,7 +113,7 @@ const CosmicChat = () => {
             </div>
             
             <CardContent className="p-0">
-              <div className="h-[60vh] overflow-y-auto p-6 space-y-4">
+              <div className="h-[60vh] overflow-y-auto p-6 space-y-4" ref={chatContainerRef}>
                 {chatHistory.map((msg, index) => (
                   <div 
                     key={index} 
@@ -121,9 +163,12 @@ const CosmicChat = () => {
           
           <div className="mt-6 text-center text-sm text-amber-200/60">
             <p>For personalized cosmic insights, consider generating your full birth chart.</p>
+            <p className="mt-2">You have {getRemainingFreeQueries()} free queries remaining this month.</p>
           </div>
         </div>
       </main>
+      
+      {showPayment && <PaymentTrigger onClose={() => setShowPayment(false)} />}
       
       <Footer />
     </div>
