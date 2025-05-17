@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -35,10 +36,11 @@ const Astrology = () => {
           
           <div className="container mx-auto px-4 text-center relative z-10">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-600 font-serif">
-              Discover Your Cosmic Blueprint
+              Unveil Your Celestial Destiny
             </h1>
-            <p className="text-lg md:text-xl text-amber-200/80 max-w-2xl mx-auto">
-              Explore how celestial patterns influence your personality, emotions, and life path
+            <p className="text-lg md:text-xl text-amber-200/80 max-w-3xl mx-auto">
+              The ancient wisdom of the stars awaits you. Discover how the cosmic alignment at your birth 
+              shapes your journey, illuminates your hidden talents, and reveals your true path in this universe.
             </p>
             <div className="mt-6 flex justify-center space-x-2">
               <div className="w-2 h-2 rounded-full bg-amber-600/60 animate-pulse"></div>
@@ -57,7 +59,7 @@ const Astrology = () => {
                 value="birth-chart" 
                 className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-900/60 data-[state=active]:to-orange-900/60 data-[state=active]:text-amber-300"
               >
-                Your Cosmic Profile
+                Your Cosmic Essence
               </TabsTrigger>
               <TabsTrigger 
                 value="zodiac-signs"
