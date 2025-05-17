@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -106,9 +105,13 @@ const ZodiacSignCards = () => {
   return (
     <div className="space-y-6">
       <Tabs defaultValue={activeSign} onValueChange={setActiveSign}>
-        <TabsList className="flex flex-wrap justify-center gap-1 mb-4">
+        <TabsList className="grid grid-cols-6 gap-2 h-auto min-h-[100px] bg-gray-800/60 p-4 border border-amber-900/30">
           {zodiacSigns.map((sign) => (
-            <TabsTrigger key={sign.name} value={sign.name} className="px-3 py-1">
+            <TabsTrigger 
+              key={sign.name} 
+              value={sign.name} 
+              className="px-3 py-2 transition-all duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-amber-400 hover:to-orange-500 hover:shadow-[0_0_15px_rgba(251,191,36,0.3)] data-[state=active]:text-transparent data-[state=active]:bg-clip-text data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-400 data-[state=active]:to-orange-500"
+            >
               {sign.name}
             </TabsTrigger>
           ))}
