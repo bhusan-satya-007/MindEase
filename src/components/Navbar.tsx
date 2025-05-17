@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Moon, Sun } from 'lucide-react';
@@ -25,7 +24,6 @@ const Navbar = () => {
             <Link to="/chat" className="text-gray-600 hover:text-primary transition-colors">Chat Support</Link>
             <Link to="/music" className="text-gray-600 hover:text-primary transition-colors">Calm Music</Link>
             <Link to="/meditation" className="text-gray-600 hover:text-primary transition-colors">Meditation</Link>
-            <Link to="/astrology" className="text-gray-600 hover:text-primary transition-colors">Cosmic Insider</Link>
             <Button variant="outline" size="sm" className="ml-2">
               Sign In
             </Button>
@@ -72,13 +70,6 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Meditation
-            </Link>
-            <Link 
-              to="/astrology" 
-              className="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100 hover:text-primary"
-              onClick={() => setIsOpen(false)}
-            >
-              Cosmic Insider
             </Link>
             <Button variant="outline" size="sm" className="ml-2 w-full">
               Sign In
