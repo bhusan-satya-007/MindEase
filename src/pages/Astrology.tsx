@@ -7,7 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ZodiacSignCards from '@/components/ZodiacSignCards';
 import BirthDataForm from '@/components/BirthDataForm';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, MessageCircle, CreditCard } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Astrology = () => {
   const [activeTab, setActiveTab] = useState('birth-chart');
@@ -46,6 +47,25 @@ const Astrology = () => {
               <div className="w-2 h-2 rounded-full bg-amber-600/60 animate-pulse"></div>
               <div className="w-2 h-2 rounded-full bg-amber-500/60 animate-pulse delay-100"></div>
               <div className="w-2 h-2 rounded-full bg-amber-400/60 animate-pulse delay-200"></div>
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-4 mt-8">
+              <Link to="/cosmic-chat">
+                <Button 
+                  variant="outline"
+                  className="border border-orange-600/30 bg-gradient-to-r from-gray-900 to-gray-800 hover:from-amber-950 hover:to-orange-950 text-amber-400 hover:text-amber-300"
+                >
+                  <MessageCircle className="mr-2" /> Cosmic Chat
+                </Button>
+              </Link>
+              <Link to="/payment">
+                <Button 
+                  variant="outline"
+                  className="border border-orange-600/30 bg-gradient-to-r from-gray-900 to-gray-800 hover:from-amber-950 hover:to-orange-950 text-amber-400 hover:text-amber-300"
+                >
+                  <CreditCard className="mr-2" /> Premium Access
+                </Button>
+              </Link>
             </div>
           </div>
           <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-gray-800 to-transparent"></div>
@@ -105,13 +125,23 @@ const Astrology = () => {
                 Discover how understanding your cosmic profile can complement your mental wellness journey. 
                 These insights provide another lens through which to explore your emotions, behaviors, and life patterns.
               </p>
-              <Button 
-                variant="outline" 
-                className="border border-orange-600/30 bg-gradient-to-r from-gray-900 to-gray-800 hover:from-amber-950 hover:to-orange-950 text-amber-400 hover:text-amber-300"
-                onClick={() => window.location.href = '/chat'}
-              >
-                <BookOpen className="mr-2" /> Discuss with Our Assistant
-              </Button>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button 
+                  variant="outline" 
+                  className="border border-orange-600/30 bg-gradient-to-r from-gray-900 to-gray-800 hover:from-amber-950 hover:to-orange-950 text-amber-400 hover:text-amber-300"
+                  onClick={() => window.location.href = '/chat'}
+                >
+                  <BookOpen className="mr-2" /> MindEase Assistant
+                </Button>
+                <Link to="/cosmic-chat">
+                  <Button 
+                    variant="outline" 
+                    className="border border-orange-600/30 bg-gradient-to-r from-gray-900 to-gray-800 hover:from-amber-950 hover:to-orange-950 text-amber-400 hover:text-amber-300"
+                  >
+                    <MessageCircle className="mr-2" /> Cosmic Assistant
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

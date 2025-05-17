@@ -9,6 +9,8 @@ import Chat from "./pages/Chat";
 import Music from "./pages/Music";
 import Meditation from "./pages/Meditation";
 import Astrology from "./pages/Astrology";
+import CosmicChat from "./pages/CosmicChat";
+import Payment from "./pages/Payment";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +27,8 @@ const App = () => (
           <Route path="/music" element={<Music />} />
           <Route path="/meditation" element={<Meditation />} />
           <Route path="/astrology" element={<Astrology />} />
+          <Route path="/cosmic-chat" element={<CosmicChat />} />
+          <Route path="/payment" element={<Payment />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
